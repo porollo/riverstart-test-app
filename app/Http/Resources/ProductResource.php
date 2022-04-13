@@ -12,14 +12,24 @@ class ProductResource extends JsonResource
     private mixed $created_at;
     private mixed $updated_at;
 
-    #[ArrayShape(['id' => "mixed", 'name' => "mixed", 'type' => "mixed", 'created_at' => "mixed", 'updated_at' => "mixed"])] public function toArray($request): array
+    #[ArrayShape(['product_id' => "mixed", 'product_name' => "mixed", 'product_type' => "mixed", 'created_at' => "mixed", 'updated_at' => "mixed"])]
+
+    public function toArray($request): array
     {
         return [
-            'id' => $this->id,
-            'name' => $this->name,
-            'type' => $this->type,
+            'product_id' => $this->id,
+            'product_name' => $this->name,
+            'product_type' => $this->type,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
+        ];
+    }
+
+    public function with($request){
+        return [
+            'version' => "1.0",
+            'author_url' => "Dmitriy S. Porollo",
+            'year' => "2022"
         ];
     }
 }
