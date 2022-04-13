@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use JetBrains\PhpStorm\ArrayShape;
 
 class ProductResource extends JsonResource
 {
@@ -11,7 +12,7 @@ class ProductResource extends JsonResource
     private mixed $created_at;
     private mixed $updated_at;
 
-    public function toArray($request)
+    #[ArrayShape(['id' => "mixed", 'name' => "mixed", 'type' => "mixed", 'created_at' => "mixed", 'updated_at' => "mixed"])] public function toArray($request): array
     {
         return [
             'id' => $this->id,
