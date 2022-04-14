@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ProductCategoryResource;
+use App\Models\ProductCategory;
 use Illuminate\Http\Request;
 
 class ProductCatrgoryController extends Controller
@@ -13,7 +15,8 @@ class ProductCatrgoryController extends Controller
      */
     public function index()
     {
-        //
+        $productCategories = ProductCategory::all();
+        return ProductCategoryResource::collection($productCategories);
     }
 
     /**
