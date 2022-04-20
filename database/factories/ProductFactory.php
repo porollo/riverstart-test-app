@@ -5,9 +5,11 @@ namespace Database\Factories;
 use App\Models\Product;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
+
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<Product>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Product>
  */
+
 class ProductFactory extends Factory
 {
     /**
@@ -19,7 +21,7 @@ class ProductFactory extends Factory
     {
         return [
             'name' => $this->faker->name(),
-            'type' => $this->faker->unique()->safeEmail(),
+            'type' => $this->faker->name(),
         ];
     }
 }

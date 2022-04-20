@@ -18,7 +18,7 @@ class ProductCategoryFactory extends Factory
     {
         return [
             'name' => $this->faker->name(),
-            'type' => $this->faker->unique()->safeEmail(),
+            'type' => $this->faker->name(),
         ];
     }
 }
