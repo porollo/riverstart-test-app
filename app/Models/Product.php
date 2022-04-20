@@ -13,6 +13,11 @@ class Product extends Model
 
     protected $primaryKey = 'product_id';
 
+    protected $fillable = [
+        'name',
+        'type',
+    ];
+
     public function categories(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(Category::class);
