@@ -7,12 +7,12 @@ use JetBrains\PhpStorm\ArrayShape;
 
 class CategoryResource extends JsonResource
 {
+    private mixed $id = 0;
     private String $name = "Cars";
     private String $type = "Auto";
     private String $date = "Today";
     private String $created_at = "30.12.2015";
     private String $updated_at = "12.04.2022";
-    private mixed $id = 0;
 
     #[ArrayShape(['category_id' => "mixed", 'category_name' => "mixed", 'category_type' => "mixed",'category_date' => "mixed", 'created_at' => "mixed", 'updated_at' => "mixed"])]
 
