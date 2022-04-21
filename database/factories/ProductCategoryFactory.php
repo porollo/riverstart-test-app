@@ -18,7 +18,9 @@ class ProductCategoryFactory extends Factory
     {
         return [
             'name' => $this->faker->name(),
-            'type' => $this->faker->name(),
+            'product' => $this->faker->name(),
+            'category' => $this->faker->name(),
+            'description' => $this->faker->name(),
         ];
     }
 }

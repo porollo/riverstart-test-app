@@ -5,9 +5,12 @@ namespace App\Http\Controllers\api;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\CategoryResource;
 use App\Models\Category;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Http\Response;
+use Illuminate\Routing\Redirector;
 
 class CategoryController extends Controller
 {
@@ -81,10 +84,12 @@ class CategoryController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return Response
+     * @return Application|RedirectResponse|Redirector
      */
-    public function destroy(int $id): Response
+    public function destroy(int $id): Application|RedirectResponse|Redirector
     {
-        //
+        $category = category::find($id);
+        $category->delete();
+        return redirect('/categories');
     }
 }

@@ -48,10 +48,10 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $product_id
      * @return Response
      */
-    public function show($id)
+    public function show(int $product_id)
     {
         //
     }
@@ -59,10 +59,10 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $product_id
      * @return Response
      */
-    public function edit($id)
+    public function edit(int $product_id)
     {
         //
     }
@@ -71,10 +71,10 @@ class ProductController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param int $product_id
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, int $product_id)
     {
         //
     }
@@ -82,13 +82,13 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param $id
+     * @param $product_id
      * @return Application|RedirectResponse|Redirector
      */
-    public function destroy($id): Application|RedirectResponse|Redirector
+    public function destroy($product_id): Application|RedirectResponse|Redirector
     {
-        $product = Product::find($id);
+        $product = products::find($product_id);
         $product->delete();
-        return redirect('/');
+        return redirect('/products');
     }
 }

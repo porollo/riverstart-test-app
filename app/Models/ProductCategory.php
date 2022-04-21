@@ -11,11 +11,11 @@ class ProductCategory extends Model
 
     protected $table = 'product_categories';
 
-    protected $primaryKey = 'product_category_id';
-
     protected $fillable = [
         'name',
-        'type',
+        'product',
+        'category',
+        'description',
     ];
 
 }

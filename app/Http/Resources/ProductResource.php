@@ -7,10 +7,10 @@ use JetBrains\PhpStorm\ArrayShape;
 
 class ProductResource extends JsonResource
 {
-    private mixed $type;
-    private mixed $name;
-    private mixed $created_at;
-    private mixed $updated_at;
+    public mixed $type;
+    public mixed $name;
+    public mixed $created_at;
+    public mixed $updated_at;
 
     #[ArrayShape(['product_id' => "mixed", 'product_name' => "mixed", 'product_type' => "mixed", 'created_at' => "mixed", 'updated_at' => "mixed"])]
 
