@@ -16,6 +16,11 @@ class Product extends Model
         'type',
     ];
 
+    public static function find($id)
+    {
+        return self::find($id);
+    }
+
     public function categories(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(Category::class);

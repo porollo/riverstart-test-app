@@ -16,4 +16,8 @@ class Category extends Model
         'type',
     ];
 
+    public static function find($id)
+    {
+        return self::find($id);
+    }
 }

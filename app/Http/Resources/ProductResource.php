@@ -13,10 +13,11 @@ class ProductResource extends JsonResource
     public String $created_at = "30.09.2020";
     public String $updated_at = "30.09.2022";
 
-    #[ArrayShape(['product_id' => "mixed", 'product_name' => "String", 'product_type' => "String", 'created_at' => "String", 'updated_at' => "String"])] public function toArray($request): array
+    #[ArrayShape(['id' => "mixed", 'product_name' => "String", 'product_type' => "String", 'created_at' => "String", 'updated_at' => "String"])] public function toArray($request): array
     {
+        $id = 0;
         return [
-            'product_id' => $this->id,
+            'id' => $this->$id,
             'product_name' => $this->name,
             'product_type' => $this->type,
             'created_at' => $this->created_at,

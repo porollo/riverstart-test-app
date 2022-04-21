@@ -7,7 +7,6 @@ use App\Http\Resources\CategoryResource;
 use App\Models\Category;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Redirector;
@@ -28,56 +27,65 @@ class CategoryController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return Response
+     * @return Application|Redirector|RedirectResponse
      */
-    public function create(): Response
+    public function create(): Application|RedirectResponse|Redirector
     {
-        //
-    }
+        $id = 0;
+        $category = category::find($id);
+        $category->create();
+        return redirect('/category');    }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param Request $request
-     * @return Response
+     * @return Application|Redirector|RedirectResponse
      */
-    public function store(Request $request): Response
+    public function store(): Application|RedirectResponse|Redirector
     {
-        //
+        $id = 0;
+        $category = category::find($id);
+        $category->store();
+        return redirect('/category');
     }
 
     /**
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return Response
+     * @return Application|Redirector|RedirectResponse
      */
-    public function show(int $id): Response
+    public function show(int $id): Application|RedirectResponse|Redirector
     {
-        //
+        $category = category::find($id);
+        $category->show();
+        return redirect('/category');
     }
 
     /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return Response
+     * @return Application|Redirector|RedirectResponse
      */
-    public function edit(int $id): Response
+    public function edit(int $id): Application|RedirectResponse|Redirector
     {
-        //
+        $category = category::find($id);
+        $category->edit();
+        return redirect('/category');
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param Request $request
      * @param  int  $id
-     * @return Response
+     * @return Application|Redirector|RedirectResponse
      */
-    public function update(Request $request, int $id): Response
+    public function update(int $id): Application|RedirectResponse|Redirector
     {
-        //
+        $category = category::find($id);
+        $category->update();
+        return redirect('/category');
     }
 
     /**
@@ -90,6 +98,6 @@ class CategoryController extends Controller
     {
         $category = category::find($id);
         $category->delete();
-        return redirect('/categories');
+        return redirect('/category');
     }
 }

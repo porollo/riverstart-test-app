@@ -7,9 +7,7 @@ use App\Http\Resources\ProductResource;
 use App\Models\Product;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
-use Illuminate\Http\Response;
 use Illuminate\Routing\Redirector;
 
 class ProductController extends Controller
@@ -25,69 +23,55 @@ class ProductController extends Controller
         return ProductResource::collection($products);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return Response|null
-     */
-    public function create(): ?Response
-    {
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
 
     /**
      * Display the specified resource.
      *
-     * @param int $product_id
-     * @return Response
+     * @param int $id
+     * @return Application|Redirector|RedirectResponse
      */
-    public function show(int $product_id)
+    public function show(int $id): Application|RedirectResponse|Redirector
     {
-        //
+        $product = product::find($id);
+        $product->show($id);
+        return redirect('/products'); //FixIt
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param int $product_id
-     * @return Response
+     * @param int $id
+     * @return Application|Redirector|RedirectResponse
      */
-    public function edit(int $product_id)
+    public function edit(int $id): Application|RedirectResponse|Redirector
     {
-        //
+        $product = product::find($id);
+        $product->edit();
+        return redirect('/product_edit');
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param int $product_id
-     * @return Response
+     * @param $id
+     * @return Application|RedirectResponse|Redirector
      */
-    public function update(Request $request, int $product_id)
+    public function update($id): Application|RedirectResponse|Redirector
     {
-        //
+       $product = product::find($id);
+       $product->update();
+       return redirect('/products');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param $product_id
+     * @param $id
      * @return Application|RedirectResponse|Redirector
      */
-    public function destroy($product_id): Application|RedirectResponse|Redirector
+    public function destroy($id): Application|RedirectResponse|Redirector
     {
-        $product = products::find($product_id);
+        $product = product::find($id);
         $product->delete();
         return redirect('/products');
     }
