@@ -7,14 +7,13 @@ use JetBrains\PhpStorm\ArrayShape;
 
 class ProductResource extends JsonResource
 {
-    public mixed $type;
-    public mixed $name;
-    public mixed $created_at;
-    public mixed $updated_at;
+    public mixed $id = 0;
+    public String $type = "Car";
+    public String $name = "Volvo";
+    public String $created_at = "30.09.2020";
+    public String $updated_at = "30.09.2022";
 
-    #[ArrayShape(['product_id' => "mixed", 'product_name' => "mixed", 'product_type' => "mixed", 'created_at' => "mixed", 'updated_at' => "mixed"])]
-
-    public function toArray($request): array
+    #[ArrayShape(['product_id' => "mixed", 'product_name' => "String", 'product_type' => "String", 'created_at' => "String", 'updated_at' => "String"])] public function toArray($request): array
     {
         return [
             'product_id' => $this->id,
@@ -25,7 +24,8 @@ class ProductResource extends JsonResource
         ];
     }
 
-    public function with($request){
+    #[ArrayShape(['version' => "string", 'author_url' => "string", 'year' => "string"])] public function with($request): array
+    {
         return [
             'version' => "1.0",
             'author_url' => "Dmitriy S. Porollo",

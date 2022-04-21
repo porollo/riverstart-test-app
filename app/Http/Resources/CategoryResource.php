@@ -3,16 +3,16 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
-use Illuminate\Support\Facades\Date;
 use JetBrains\PhpStorm\ArrayShape;
 
 class CategoryResource extends JsonResource
 {
-    private String $name;
-    private String $type;
-    private Date $date;
-    private Date $created_at;
-    private date $updated_at;
+    private String $name = "Cars";
+    private String $type = "Auto";
+    private String $date = "Today";
+    private String $created_at = "30.12.2015";
+    private String $updated_at = "12.04.2022";
+    private mixed $id = 0;
 
     #[ArrayShape(['category_id' => "mixed", 'category_name' => "mixed", 'category_type' => "mixed",'category_date' => "mixed", 'created_at' => "mixed", 'updated_at' => "mixed"])]
 
@@ -28,7 +28,8 @@ class CategoryResource extends JsonResource
         ];
     }
 
-    #[ArrayShape(['version' => "string", 'author_url' => "string", 'year' => "string"])] public function with($request){
+    #[ArrayShape(['version' => "string", 'author_url' => "string", 'year' => "string"])] public function with($request): array
+    {
         return [
             'version' => "1.0",
             'author_url' => "Dmitriy S. Porollo",
